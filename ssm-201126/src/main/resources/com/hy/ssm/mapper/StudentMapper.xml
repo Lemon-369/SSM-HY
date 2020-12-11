@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hy.ssm.mapper.StudentMapper">
+    <resultMap id="Stucla" type="student">
+        <!--主键字段的对应-->
+        <id property="id" column="id"></id>
+        <result property="classes.className" column="className"></result>
+    </resultMap>
+
+    <select id="queryAll" resultMap="Stucla">
+        select s.*,c.className from student s,classes c where s.classNo=c.cid
+    </select>
+
+    <select id="queryBy" parameterType="queryCondition" resultMap="Stucla">
+        <bind name="named" value="'%'+name+'%'"></bind>
+        select  s.*,c.className from student s,classes c
+        <where>
+            s.classNo=c.cid
+            <if test="id != null and id!=''">
+                and id=#{id}
+            </if>
+            <if test="name !=null and name!=''">
+                and name like #{named}
+            </if>
+            <if test="className !=null and className!=''">
+                and className=#{className}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="student">
+        <selectKey keyProperty="id" resultType="string" order="BEFORE">
+            select uuid()
+        </selectKey>
+        insert into student values(#{id},#{name},#{gender},#{classNo})
+    </insert>
+
+    <delete id="delete" parameterType="String">
+        delete from student where id in (
+        <foreach collection="array" separator = ',' close = ')' item='id'>
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,5 @@
+# Project exclude paths
+/out/
+/ssm-201124/target/
+/ssm-201126/target/
+/ssm-kss/target/
