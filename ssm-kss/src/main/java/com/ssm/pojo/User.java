@@ -28,4 +28,5 @@ public class User {
     @TableField(value = "classNo")
     private Integer classNo;
     private Classes classes;
+    //
 }
