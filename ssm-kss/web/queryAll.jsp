@@ -106,7 +106,7 @@
         });
         //监听工具条
         table.on('tool(test)', function(obj){
-            var data = obj.data;
+            var data = obj.data;//获取返回的数据
             if(obj.event === 'detail'){
                 // layer.msg('ID：'+ data.id + ' 的查看操作');
                 layer.alert(JSON.stringify(data));

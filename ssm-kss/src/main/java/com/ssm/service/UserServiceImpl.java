@@ -1,6 +1,5 @@
 package com.ssm.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ssm.mapper.UserMapper;
 import com.ssm.pojo.QueryCondition;

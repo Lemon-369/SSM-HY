@@ -8,9 +8,7 @@
         <result property="classes.cno" column="cno"></result>
         <result property="classes.className" column="className"></result>
     </resultMap>
-<!--    <select id="queryAll" resultMap="user">-->
-<!--        select u.*,c.* from user u,classes c where u.classNo=c.cno-->
-<!--    </select>-->
+
     <select id="queryAll" parameterType="queryCondition" resultMap="user">
         <if test="condition.name!=null">
             <bind name="userName" value="'%'+condition.name+'%'"></bind>

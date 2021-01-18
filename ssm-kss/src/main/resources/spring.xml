@@ -22,6 +22,7 @@
     <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
         <!-- 注入DataSource，需要知道用的是哪个数据库 -->
         <property name="dataSource" ref="dataSourse"></property>
+
         <!-- 加载mybatis配置文件 -->
         <property name="configuration">
             <bean id="configuration" class="com.baomidou.mybatisplus.core.MybatisConfiguration">
@@ -31,8 +32,10 @@
                 <property name="logImpl" value="org.apache.ibatis.logging.stdout.StdOutImpl"/>
             </bean>
         </property>
+
         <!-- 配置别名 -->
         <property name="typeAliasesPackage" value="com.ssm"></property>
+
         <!-- 批量配置mapper映射 -->
         <property name="mapperLocations" value="classpath*:com/ssm/mapper/*.xml"></property>
 
@@ -43,6 +46,7 @@
             </array>
         </property>
     </bean>
+
     <!--spring批量扫描mybatis的mapper接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.ssm.mapper"></property>
