@@ -10,8 +10,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LayUiData {
-    private Integer code;
-    private String msg;
     private Integer count;
     private List<User> Data;
 }
